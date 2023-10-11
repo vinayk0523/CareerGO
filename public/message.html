@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Career Go</title>
+</head>
+<style>
+    #header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    #showcomment{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">CAREER GO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a  class="nav-link" href="form.html">
+                        CONTACT US
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="header">
+        <h1 style="margin-bottom: 50px;">Discuss Section</h1>
+         <!-- <div> -->
+            <img src="laptop.jpg" alt="..." width="600" height="400" style="
+            margin-bottom: 45px;">
+        <!-- <div> -->
+    </div>
+    <div class="container" style="display: flex;justify-content: center;">
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control">
+                            <label for="name" class="">Your name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Your email</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2"
+                                class="form-control md-textarea"></textarea>
+                            <label for="message">Your message</label>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            <div class="text-center text-md-left mb-4">
+                <a class="btn btn-primary" onclick='submitForm()'>Post a Comment</a>
+            </div>
+            <div id="showcomment"></div>
+
+        </div>
+    </div>
+
+
+    <script>
+        try {
+            fetch('/usermessage')
+                .then(function (res) {
+                    return res.json();
+                })
+                .then(function (data) {
+                    document.getElementById('showcomment').innerHTML = data.message;
+                })
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+        const submitForm = async () => {
+            try {
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                // const subject = document.getElementById('subject');
+                const message = document.getElementById('message');
+                function clearfun() {
+                    name.value = "";
+                    email.value = "";
+                    // subject.value = "";
+                    message.value = "";
+                }
+                fetch("/addmessage/", {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "name": name.value,
+                        "email": email.value,
+                        // "subject": subject.value,
+                        "message": message.value
+                    }),
+                })
+                    .then(function (resp) {
+                        console.log(resp);
+                        return resp.json();
+                    })
+                    .then(function (dataaaaaa) {
+                        const response = dataaaaaa.result;
+                        if (response) {
+                            // console.log(data);
+                            document.getElementById('showcomment').innerHTML = dataaaaaa.data;
+                        }
+                        clearfun();
+                    });
+            } catch (err) {
+                console.log(err);
+                alert("Some error occured");
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

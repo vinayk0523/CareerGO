@@ -1,0 +1,29 @@
+<div class="card text-center border-info">
+                            <div class="card-body ">
+                                <h3 class="card-text">TUSHAR GOYAL</h3>
+                                <p class="card-text">HELLO EVERYONE I HAVE ISSUE IN MY CAT APPLICATION FORM FOR MY MBA CAN ANYONE PLEASE HELP</p>
+                                <a href="mailto:gyanexplode@gmail.com" class="card-text">gyanexplode@gmail.com</a>
+                            </div>
+                        </div>
+        <br><div class="card text-center border-info">
+                            <div class="card-body ">
+                                <h3 class="card-text">MANAV LOHANI</h3>
+                                <p class="card-text">HELLO EVERYONE CAN SOMEONE GIVE ME IDEAS FOR MY YOUTUBE CHANNEL- THE NERD CODER</p>
+                                <a href="mailto:manav123@gmail.com" class="card-text">manav123@gmail.com</a>
+                            </div>
+                        </div>
+        <br><div class="card text-center border-info">
+                            <div class="card-body ">
+                                <h3 class="card-text">SHUBHAM GARG</h3>
+                                <p class="card-text">CAN SOMEONE PLEASE TELL WHAT IS THE ELIGIBILTY FOR UPSC EXAM</p>
+                                <a href="mailto:shuham456@gmail.com" class="card-text">shuham456@gmail.com</a>
+                            </div>
+                        </div>
+        <br><div class="card text-center border-info">
+                            <div class="card-body ">
+                                <h3 class="card-text">AMAN</h3>
+                                <p class="card-text">HI ALL JUST TO GET INFO ABOUT OPERATING SYSTEMS EXAM</p>
+                                <a href="mailto:vinaykumar050123@gmail.com" class="card-text">vinaykumar050123@gmail.com</a>
+                            </div>
+                        </div>
+        <br>
